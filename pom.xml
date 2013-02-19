@@ -55,7 +55,7 @@ generated project is the inteted usage and no copyright notice should be maintai
         </dependency>
         <dependency>
             <groupId>org.apache.stanbol</groupId>
-            <artifactId>org.apache.stanbol.commons.web.viewable.ldpath</artifactId>
+            <artifactId>org.apache.stanbol.commons.web.viewable</artifactId>
             <version>0.12.0-SNAPSHOT</version>
         </dependency>
         <dependency>
