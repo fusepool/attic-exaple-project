@@ -63,7 +63,7 @@ public class ResourceResolver {
     private UriRef LOG_GRAPH_NAME = new UriRef("http://example.org/resource-resolver-log.graph");
     
     /**
-     * This method return an RdfViewable, this is an RDF resource with associated
+     * This method return an RdfViewable, this is an RDF serviceUri with associated
      * presentational information.
      */
     @GET
@@ -72,15 +72,15 @@ public class ResourceResolver {
             @HeaderParam("user-agent") String userAgent) throws Exception {
         final String resourcePath = uriInfo.getAbsolutePath().toString();
         //The URI at which this service was accessed accessed, this will be the 
-        //central resource in the response
-        final UriRef resource = new UriRef(resourcePath);
+        //central serviceUri in the response
+        final UriRef serviceUri = new UriRef(resourcePath);
         //the in memory graph to which the triples for the response are added
         final MGraph responseGraph = new IndexedMGraph();
         //A union graph containing both the response specif triples as well 
         //as the log-graph
         final UnionMGraph resultGraph = new UnionMGraph(responseGraph, getLogGraph());
         //This GraphNode represents the service within our result graph
-        final GraphNode node = new GraphNode(resource, resultGraph);
+        final GraphNode node = new GraphNode(serviceUri, resultGraph);
         //The triples will be added to the first graph of the union
         //i.e. to the in-memory responseGraph
         node.addProperty(RDF.type, Ontology.ResourceResolver);
@@ -112,7 +112,7 @@ public class ResourceResolver {
     }
 
     /**
-     * Add the description of a resource to the specified MGraph using SiteManager.
+     * Add the description of a serviceUri to the specified MGraph using SiteManager.
      * The description includes the metadata provided by the SiteManager.
      * 
      */
