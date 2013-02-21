@@ -79,7 +79,7 @@ public class ResourceResolver {
         try {
             tcManager.createMGraph(REQUEST_LOG_GRAPH_NAME);
             //now make sure everybody can read from the graph
-            //or more precisly, to anybody who can read the content-graph
+            //or more precisly, anybody who can read the content-graph
             TcAccessController tca = new TcAccessController(tcManager);
             tca.setRequiredReadPermissions(REQUEST_LOG_GRAPH_NAME, 
                     Collections.singleton((Permission)new TcPermission(
@@ -124,7 +124,7 @@ public class ResourceResolver {
             logRequest(iri, userAgent);
         }
         //What we return is the GraphNode we created with a template path
-        return new RdfViewable("ServiceEntry", node, ResourceResolver.class);
+        return new RdfViewable("ResourceResolver", node, ResourceResolver.class);
     }
     
 

@@ -9,4 +9,4 @@
         recipe:ingredientInverseProperty <http://stanbol.apache.org/ontology/entityhub/entityhub#about>],
     [a recipe:Ingredient;
         recipe:ingredientProperty <http://example.org/service-description#describes>];
-  recipe:recipeDomain "org/apache/stanbol/example/ServiceEntry" .
+  recipe:recipeDomain "org/apache/stanbol/example/ResourceResolver" .

@@ -7,9 +7,3 @@ After installing a new menu item pointing you to /example-service will appear.
 
 The example service allows to look up resources using the site-manager. The 
 service can be accessed via browser as HTML or as RDF for machine clients.
-
-If accessing the service to get RDF you may expand the result using the query properties
-
-xPropSubj=http://stanbol.apache.org/ontology/entityhub/entityhub%23about
-and 
-xPropObj=http://example.org/service-description%23describes

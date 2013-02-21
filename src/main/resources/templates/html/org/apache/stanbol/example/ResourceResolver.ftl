@@ -11,14 +11,21 @@
 
   <body>
     <h1>Resolve resource</h1>
-    <@ldpath path="rdf:type"/><br/>
     
     <form action="<@ldpath path="."/>">
-        <label for="iri" /><input type="text" name="iri" value="<@ldpath path="ont:describes"/>" size="90"/><br/>
+        IRI of entity to look up (e.g. http://dbpedia.org/resource/Paris) <br/>
+        <label for="iri" /><input type="text" name="iri" 
+                value="<@ldpath path="ont:describes"/>" size="90"/><br/>
+        WARNING: all requests are logged, information about your request will 
+        be shown to any user requesting the same resource<br/>
         <input type="submit" value="look up" />
     </form>
 
     <@ldpath path="ont:describes">
+        <p>
+        Note: you can also get an rdf representation of this description 
+        by setting a respective Accept header, e.g.<br/>
+        <code>curl -H "Accept: text/turtle" <@ldpath path="^ont:describes"/>?iri=<@ldpath path="."/></code>
         <#if evalLDPath("rdfs:label")??>
             <h2>Resource Description</h2>
             <h3>Labels:</h3>
@@ -36,7 +43,8 @@
                 License: <@ldpath path="dct:license"/> 
                 </div>
                 <div>
-                Attribution URL: <a href="<@ldpath path="cc:attributionURL"/>" ><@ldpath path="cc:attributionURL"/></a> 
+                Attribution URL: <a href="<@ldpath path="cc:attributionURL"/>" >
+                <@ldpath path="cc:attributionURL"/></a> 
                 </div>
             </@ldpath>
         </#if>
@@ -49,6 +57,7 @@
                 </li>
             </@ldpath>
         </ol>
+        </p>
     </@ldpath>
   </body>
 </html>
